@@ -1,0 +1,34 @@
+
+<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+  <ul class="navbar-nav">
+  	<li class="nav-item marg" >
+   	  <%= link_to 'Home',root_path %>
+    </li>
+  	<% if current_user %>
+      <li class="nav-item marg">
+        <%= link_to 'Edit',edit_user_registration_path %>
+      </li>
+      <li class="nav-item marg">
+   	   <%= link_to 'Sign Out',destroy_user_session_path, method: :delete %>
+      </li>
+      <li class="nav-item marg">
+        <%= link_to 'Delete My Account',registration_path(current_user), data: { confirm: "Are you sure? Your Account will be deleted completely!" }, method: :delete %>
+      </li>
+    <% else %>
+      <li class="nav-item marg">
+        <%= link_to 'Register',new_user_registration_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign In',new_user_session_path %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
+
+<% if current_user %>
+ Login Count: <%= current_user.sign_in_count %><br>
+ Current Sign In Tme: <%= current_user.current_sign_in_at %><br>
+ Last Sign In Time: <%= current_user.last_sign_in_at %><br>
+ Current Sign In Ip: <%= current_user.current_sign_in_ip %><br>
+ Last Sign In Ip: <%= current_user.last_sign_in_ip %>
+<% end %>

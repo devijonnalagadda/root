@@ -3,6 +3,13 @@
   <%= devise_error_messages! %>
 
   <div class="form-group row field">
+    <%= f.label :name, class: "col-sm-2 col-form-label col-form-label-lg" %><br />
+    <div class="col-sm-10">
+      <%= f.text_field :name, autocomplete: "new-password", class: "form-control form-control-lg" %>
+    </div>
+  </div>
+
+  <div class="form-group row field">
     <%= f.label :email, class: "col-sm-2 col-form-label col-form-label-sm"%><br />
     <div class="col-sm-10">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %>
@@ -17,22 +24,25 @@
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     </div>
   </div>
+
   <div class="form-group row field">
     <%= f.label :password_confirmation, class: "col-sm-2 col-form-label col-form-label-lg" %><br />
     <div class="col-sm-10">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg" %>
     </div>
   </div>
+
   <div class="form-group row field">
     <%= f.label :phone, class: "col-sm-2 col-form-label col-form-label-lg" %><br />
     <div class="col-sm-10">
       <%= f.text_field :phone, autocomplete: "new-password", class: "form-control form-control-lg" %>
     </div>
   </div>
+
   <div class="field">
-  <%= f.label :organization %>
+    <%= f.label :organization %>
     <%= collection_select(:organizations, :id, Organization.all, :id, :name, {:multiple => true}) %>
-</div>
+  </div>
   
   <div class="form-group row actions">
     <%= f.submit " Sign up" %>

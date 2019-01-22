@@ -2,9 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 	
  
   def create
-  	puts "================================"
-  	puts params.inspect
-  	puts "================================"
+  	
     build_resource(sign_up_params)
     resource.organization_id=params[:organizations][:id]
     puts resource.class
@@ -29,11 +27,10 @@ class RegistrationsController < Devise::RegistrationsController
 
 
 	def sign_up_params
-    	params.require(:user).permit(:email, :password, :password_confirmation, :phone)
-
-  	end
-  	def account_update_params
-    	params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :phone)
-  	end
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone)
+  end
+  def account_update_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password, :phone)
+  end
 
 end

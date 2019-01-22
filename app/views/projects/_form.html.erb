@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :ptype %>
-    <%= form.text_field :ptype %>
+    <%= form.select :ptype, options_for_select([["Select One", ""], "Major", "Mini", "Task"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div class="field">

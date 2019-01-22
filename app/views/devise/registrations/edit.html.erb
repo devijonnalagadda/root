@@ -4,8 +4,13 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -30,14 +35,21 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+
   <div class="field">
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </div>
 
+  <div class="field">
+    <%= f.label :organization %>
+    <%= collection_select(:organizations, :id, Organization.all, :id, :name, {:multiple => true}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+  
 <% end %>
 
 <h3>Cancel my account</h3>

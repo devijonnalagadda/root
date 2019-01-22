@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Projects</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Ptype</th>
+      <th>Technology</th>
+      <th>Description</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+    <% if project.user_id == current_user.id %>
+      <tr>
+        <td><%= project.title %></td>
+        <td><%= project.ptype %></td>
+        <td><%= project.technology %></td>
+        <td><%= project.description %></td>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project', new_project_path %>

@@ -9,9 +9,13 @@ class User < ApplicationRecord
          :confirmable, :timeoutable, :trackable, :validatable, :lockable
 
   
+  validates :name,:presence => true,
+                 format: {  with: /\A[a-zA-Z\s]+\z/ },
+                 :length => { :maximum => 30 }
+
   validates :phone,:presence => true,
                  :numericality => true,
-                 :length => { :minimum => 10, :maximum => 10 }
+                 :length => { :minimum => 10, :maximum => 10 }               
 
   accepts_nested_attributes_for :organization
   

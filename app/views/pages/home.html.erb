@@ -1,3 +1,17 @@
+<% if current_user %>
 
+	<% @organizations.each do |organization| %>
+		<% @users.each do |user| %>
+			<% if user.id == current_user.id %>
+				<% if user.organization_id == organization.id %>
+					<b>Organization: </b><%= organization.name %> 
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %> 
+	
+<% else %>
 
-<h1>Welcome</h1>
+	<h1>Welcome</h1>
+
+<% end %>

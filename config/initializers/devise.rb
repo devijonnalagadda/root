@@ -117,10 +117,11 @@ Devise.setup do |config|
   # config.pepper = '2e92c3265d258e8fc56e99dcf5465f2189b239e1c31c90f325b4313309e425d7e3345f071a6d112cc3c2562105eac8dc788cdcd07ea7a17cb29451de0dabd710'
 
   # Send a notification to the original email when the user's email is changed.
-  # config.send_email_changed_notification = false
+  config.send_email_changed_notification = true
 
   # Send a notification email when the user's password is changed.
-  # config.send_password_change_notification = false
+  config.send_password_change_notification = true
+  
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -149,7 +150,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 1.weeks
+  config.remember_for = 2.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true

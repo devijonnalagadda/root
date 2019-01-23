@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_111244) do
+ActiveRecord::Schema.define(version: 2019_01_23_043203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "attachment_name"
+    t.string "attach_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_attachments_on_project_id"
+  end
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
@@ -68,5 +77,6 @@ ActiveRecord::Schema.define(version: 2019_01_22_111244) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "attachments", "projects"
   add_foreign_key "users", "organizations"
 end

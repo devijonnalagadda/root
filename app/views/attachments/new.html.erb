@@ -1,0 +1,24 @@
+<% if !@attachment.errors.empty? %>
+   <div class = "alert alert-error">
+      
+      <ul>
+         <% @attachment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+         <% end %>
+      </ul>
+      
+   </div>
+<% end %>
+
+<div class = "well">
+   <%= form_for @attachment, html: { multipart: true } do |f| %>
+      <%= f.label :attachment_name %>
+      <%= f.text_field :attachment_name %>
+      <%= f.label :attach_file %>
+      <%= f.file_field :attach_file %>
+      <%= f.label :project %>
+      <%= collection_select(:projects, :id, Project.where(user_id: current_user.id), :id, :title, {:multiple => true}) %>
+  
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>

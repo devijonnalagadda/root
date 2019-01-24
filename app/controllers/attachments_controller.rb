@@ -2,8 +2,8 @@ class AttachmentsController < ApplicationController
 	before_action :authenticate_user!
 
    	def index
-    	@attachments = Attachment.all
-    	@projects = Project.all
+      @projects = current_user.projects
+    	
    	end
    
    	def new

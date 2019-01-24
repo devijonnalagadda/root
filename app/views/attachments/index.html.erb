@@ -14,19 +14,14 @@
    
    <tbody>
       <% @projects.each do |project| %>
-         <% if project.user_id == current_user.id %>
-            <% @attachments.each do |attachment| %>
-               <% if attachment.project_id == project.id %>
-         
-                  <tr>
+            <% project.attachments.each do |attachment| %>
+               
+               <tr>
                      <td><%= attachment.attachment_name %></td>
                      <td><%= link_to "Download Attachment", attachment.attach_file_url %></td>
                      <td><%= button_to "Delete",  attachment, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{attachment.attachment_name}?" %></td>
-                  </tr>
-         
-               <% end %>
+               </tr>
             <% end %>
-         <% end %>
       <% end %>
 
    </tbody>

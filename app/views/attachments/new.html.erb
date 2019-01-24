@@ -15,7 +15,7 @@
       <%= f.label :attachment_name %>
       <%= f.text_field :attachment_name %>
       <%= f.label :attach_file %>
-      <%= f.file_field :attach_file %>
+      <%= f.file_field :attach_file, accept: "text/plain" %>
       <%= f.label :project %>
       <%= collection_select(:projects, :id, Project.where(user_id: current_user.id), :id, :title, {:multiple => true}) %>
   

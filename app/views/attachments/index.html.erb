@@ -1,9 +1,6 @@
-
-<%= link_to "New Attachment", new_attachment_path, class: "btn btn-primary" %>
-<br />
-<br />
-
-<table class = "table table-bordered table-striped">
+<h1>Attachments</h1>
+  
+<table class = "table table-bordered table-striped"> 
    <thead>.
       <tr>
          <th>Name</th>
@@ -14,16 +11,17 @@
    
    <tbody>
       <% @projects.each do |project| %>
-            <% project.attachments.each do |attachment| %>
+         <% project.attachments.each do |attachment| %>
                
-               <tr>
-                     <td><%= attachment.attachment_name %></td>
-                     <td><%= link_to "Download Attachment", attachment.attach_file_url %></td>
-                     <td><%= button_to "Delete",  attachment, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{attachment.attachment_name}?" %></td>
-               </tr>
-            <% end %>
+            <tr>
+               <td><%= attachment.attachment_name %></td>
+               <td><%= link_to "Download Attachment", attachment.attach_file_url %></td>
+               <td><%= button_to "Delete",  attachment, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{attachment.attachment_name}?" %></td>
+            </tr>
+         <% end %>
       <% end %>
-
    </tbody>
    
 </table>
+
+<%= link_to "New Attachment", new_attachment_path, class: "btn btn-primary", style: "margin-top: 15px;" %>

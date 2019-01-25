@@ -1,8 +1,8 @@
 
 <h1>Projects</h1>
 
-<table border="1">
-  <thead>
+<table class="table table-stripped">
+  <thead class="thead-light">
     <tr>
       <th>Title</th>
       <th>Ptype</th>
@@ -20,8 +20,8 @@
           <td><%= project.technology %></td>
           <td><%= project.description %></td>
           <td><%= link_to 'Show', project %></td>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-mini' %></td>
+          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
         </tr>
     <% end %>
   </tbody>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'New Project', new_project_path, :class => 'btn btn-primary' %>

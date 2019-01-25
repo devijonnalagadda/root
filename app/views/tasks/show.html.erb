@@ -1,14 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Task title:</strong>
-  <%= @task.task_title %>
-</p>
-
-<p>
-  <strong>Task description:</strong>
-  <%= @task.task_description %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @task.task_title %></h1>
+    <span class="label label-primary"> Last update <%= @task.updated_at.strftime("%b %d, %Y") %></span>
+  </div>
+</div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p>
+        <%= @task.task_description %>
+        ...
+      </p>
+    </div>
+    <div class="panel-footer">By <%=  current_user.name %></div><br>
+    <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
+
+  </div>
+</div>
+
+

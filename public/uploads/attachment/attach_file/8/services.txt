@@ -1,0 +1,58 @@
+//UserserviceService.ts
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserserviceService {
+  list =[
+        { 'name': 'Devi', 'id' : '1' },
+        { 'name': 'Souji', 'id' : '2' },
+        { 'name': 'Supriya', 'id' : '3' },
+        { 'name': 'Sathi', 'id' : '4' },
+        { 'name': 'Harika', 'id' : '5' },
+    ];
+    constructor() { }
+
+    showTodayDate(){
+      return this.list;
+  }  
+}
+
+//component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { UserserviceService } from '../userservice.service';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+
+export class HomeComponent implements OnInit {
+  todaydate=[];
+  details;
+  
+
+  constructor(public user: UserserviceService) { }
+
+  ngOnInit() {
+    this.todaydate = this.user.showTodayDate();
+  }
+
+}
+
+//component.html
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let items of todaydate">
+    <td>{{items.id}}</td>
+    <td>{{items.name}}</td>
+  </tr> 
+</table>

@@ -1,8 +1,8 @@
 
 <h1>Tasks</h1>
 
-<table border="1">
-  <thead>
+<table class="table table-stripped">
+  <thead class="thead-light">
     <tr>
       <th>Task title</th>
       <th>Task description</th>
@@ -17,8 +17,8 @@
               <td><%= task.task_title %></td>
               <td><%= task.task_description %></td>
               <td><%= link_to 'Show', task %></td>
-              <td><%= link_to 'Edit', edit_task_path(task) %></td>
-              <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Edit', edit_task_path(task), :class => 'btn btn-mini' %></td>
+              <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
             </tr>
       <% end %>
     <% end %>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_task_path, :class => 'btn btn-primary' %>

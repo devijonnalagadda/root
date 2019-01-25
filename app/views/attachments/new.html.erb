@@ -9,15 +9,20 @@
       
    </div>
 <% end %>
-
-<div class = "well">
+<div class = "well" style="margin-top: 30px;">
    <%= form_for @attachment, html: { multipart: true } do |f| %>
-      <%= f.label :attachment_name %>
-      <%= f.text_field :attachment_name %>
-      <%= f.label :attach_file %>
-      <%= f.file_field :attach_file, accept: "text/plain" %>
-      <%= f.label :project %>
-      <%= collection_select(:projects, :id, Project.where(user_id: current_user.id), :id, :title, {:multiple => true}) %>
+      <div class="form-group row">
+         <%= f.label :attachment_name, class: 'col-sm-2' %>
+         <%= f.text_field :attachment_name, class: 'col-sm-1', style: 'margin-left: 13px;' %>
+      </div>
+      <div class="form-group row">
+      <%= f.label :attach_file, class: 'col-sm-2' %>
+      <%= f.file_field :attach_file, accept: "text/plain", class: 'col-sm-1' %>
+      </div>
+      <div class="form-group row">
+      <%= f.label :project, class: 'col-sm-2' %>
+      <%= collection_select(:projects, :id, Project.where(user_id: current_user.id), :id, :title, {:multiple => true}, class: 'col-sm-1', style: 'margin-left: 13px;') %>
+      </div>
   
       <%= f.submit "Save", class: "btn btn-primary" %>
    <% end %>

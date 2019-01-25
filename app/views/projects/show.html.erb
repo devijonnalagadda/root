@@ -1,6 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @project.title %></h1>
+    <span class="label label-primary"> Last update <%= @project.updated_at.strftime("%b %d, %Y") %></span>
+  </div>
+</div>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p>
+      	<p>
   <strong>Title:</strong>
   <%= @project.title %>
 </p>
@@ -20,5 +28,15 @@
   <%= @project.description %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+    </div>
+    <div class="panel-footer">By <%=  current_user.name %></div><br>
+    <%= link_to 'Edit', edit_project_path(@project) %> |
+	<%= link_to 'Back', projects_path %>
+
+  </div>
+</div>
+
+
+
+
+

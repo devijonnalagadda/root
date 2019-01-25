@@ -10,28 +10,24 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<div id="form-group">
+  
     <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ptype %>
-    <%= form.select :ptype, options_for_select([["Select One", ""], "Major", "Mini", "Task"]), :class => 'genForm_dropBox' %>
-  </div>
-
-  <div class="field">
+    <%= form.text_field :title, class: 'form-control' %><br>
+  
     <%= form.label :technology %>
-    <%= form.text_field :technology %>
-  </div>
-
-  <div class="field">
+    <%= form.text_field :technology, class: 'form-control' %><br>
+  
     <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <%= form.text_area :description, class: 'form-control' %><br>
 
+    <%= form.label :ptype %>
+    <%= form.select :ptype, options_for_select([["Select One", ""], "Major", "Mini", "Task"]), :class => 'genForm_dropBox form-control' %><br><br>
+  
+  
+  
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success' %>
   </div>
+</div>
 <% end %>

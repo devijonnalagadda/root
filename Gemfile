@@ -66,4 +66,4 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.2'
 gem 'carrierwave', '~> 1.0'
 gem 'rails_admin'
-
+gem 'devise_google_authenticator' , path: 'lib/devise_google_authenticator-master'

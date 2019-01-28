@@ -1,27 +1,31 @@
-<h1>Attachments</h1>
+<div class="container" style="margin-top: 30px;">
+   <h1 align="center">Attachments</h1>
   
-<table class = "table table-bordered table-striped"> 
-   <thead>.
-      <tr>
-         <th>Name</th>
-         <th>Download Link</th>
-         <th> </th>
-      </tr>
-   </thead>
+   <table class = "table table-bordered table-striped"> 
+      <thead>.
+         <tr>
+            <th>Project</th>
+            <th>Attachment Name</th>
+            <th>Download Link</th>
+            <th> </th>
+         </tr>
+      </thead>
    
-   <tbody>
-      <% @projects.each do |project| %>
-         <% project.attachments.each do |attachment| %>
+      <tbody>
+         <% @projects.each do |project| %>
+            <% project.attachments.each do |attachment| %>
                
-            <tr>
-               <td><%= attachment.attachment_name %></td>
-               <td><%= link_to "Download Attachment", attachment.attach_file_url %></td>
-               <td><%= button_to "Delete",  attachment, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{attachment.attachment_name}?" %></td>
-            </tr>
+               <tr>
+                  <td><%= project.title %></td>
+                  <td><%= attachment.attachment_name %></td>
+                  <td><%= link_to "Download Attachment", attachment.attach_file_url %></td>
+                  <td><%= button_to "Delete",  attachment, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{attachment.attachment_name}?" %></td>
+               </tr>
+            <% end %>
          <% end %>
-      <% end %>
-   </tbody>
+      </tbody>
    
-</table>
+   </table>
 
-<%= link_to "New Attachment", new_attachment_path, class: "btn btn-primary", style: "margin-top: 15px;" %>
+   <%= link_to "New Attachment", new_attachment_path, class: "btn btn-primary", style: "margin-top: 15px;" %>
+</div>

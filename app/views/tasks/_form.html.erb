@@ -26,8 +26,9 @@
     <%= collection_select(:projects, :id, Project.where(user_id: current_user.id), :id, :title, {:multiple => true}, class: 'form-control') %><br>
   
   
-  <div class="actions">
-    <%= form.submit class: 'btn btn-success' %>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-success form-control text-white' %>
+    </div>
   </div>
 <% end %>
-</div>
+

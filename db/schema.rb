@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_052420) do
+ActiveRecord::Schema.define(version: 2019_01_28_095901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,10 @@ ActiveRecord::Schema.define(version: 2019_01_24_052420) do
     t.datetime "locked_at"
     t.bigint "organization_id"
     t.string "name"
+    t.string "gauth_secret"
+    t.string "gauth_enabled", default: "f"
+    t.string "gauth_tmp"
+    t.datetime "gauth_tmp_datetime"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

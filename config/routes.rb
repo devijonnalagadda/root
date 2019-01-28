@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :tasks
   resources :projects
   resources :organizations
-   root 'pages#home'
+  root 'pages#home'
    
 
    resources :attachments, only: [:index, :new, :create, :destroy]

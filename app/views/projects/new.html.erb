@@ -6,8 +6,10 @@
 </div>
 
 <div class="container">
-<%= render 'form', project: @project %>
-<br>
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+	<div class="well" style="margin: 0px auto;width: 400px;">
+		<%= render 'form', project: @project %>
+		<br>
+		<%= link_to 'Show', @project %> |
+		<%= link_to 'Back', projects_path %>
+	</div>
 </div>

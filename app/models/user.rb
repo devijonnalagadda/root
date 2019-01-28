@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+	attr_accessor :gauth_token
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :organization
   has_many :projects, dependent: :delete_all
 
-  devise :database_authenticatable, :registerable,
+  devise :google_authenticatable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
          :confirmable, :timeoutable, :trackable, :validatable, :lockable
 
@@ -18,6 +19,11 @@ class User < ApplicationRecord
                  :length => { :minimum => 10, :maximum => 10 }               
 
   accepts_nested_attributes_for :organization
+
+  User.where(:gauth_secret => nil).find_each do |user|
+  user.send(:assign_auth_secret)
+  user.save!
+  end
   
    #protected
 

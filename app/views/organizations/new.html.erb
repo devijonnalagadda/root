@@ -1,13 +1,15 @@
 <div class="container" style="margin-top: 30px;">
   <div class="page-header">
-    <h1>New Organisation</h1>
+    <h1 align="center">New Organisation</h1>
     
   </div>
 </div>
 
 <div class="container">
-<%= render 'form', organization: @organization %>
+	<div class="well" style="margin: 0px auto;width: 400px;">
+		<%= render 'form', organization: @organization %>
 
-<%= link_to 'Show', @organization %> |
-<%= link_to 'Back', organizations_path %>
+		<%= link_to 'Show', @organization %> |
+		<%= link_to 'Back', organizations_path %>
+	</div>
 </div>

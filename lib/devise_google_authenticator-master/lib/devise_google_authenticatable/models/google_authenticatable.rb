@@ -29,22 +29,32 @@ module Devise # :nodoc:
           self.gauth_tmp
         end
 
-        def validate_token(token)
+        def validate_token(token,backup_code)
           return false if self.gauth_tmp_datetime.nil?
           if self.gauth_tmp_datetime < self.class.ga_timeout.ago
             return false
           else
 
             valid_vals = []
+
+            backup_code = backup_code.to_i
+            valid_vals << backup_code
+
             valid_vals << ROTP::TOTP.new(self.get_qr).at(Time.now)
             (1..self.class.ga_timedrift).each do |cc|
               valid_vals << ROTP::TOTP.new(self.get_qr).at(Time.now.ago(30*cc))
               valid_vals << ROTP::TOTP.new(self.get_qr).at(Time.now.in(30*cc))
             end
 
+            puts "=============="
+            puts backup_code
+            puts "=============="
+            puts valid_vals
+            puts "=============="
+
             if valid_vals.include?(token.to_i)
               return true
-            else
+            else 
               return false
             end
           end

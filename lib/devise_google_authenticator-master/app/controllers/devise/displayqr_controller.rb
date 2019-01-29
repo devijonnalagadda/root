@@ -15,7 +15,7 @@ class Devise::DisplayqrController < DeviseController
   end
 
   def update
-    if resource.gauth_tmp != params[resource_name]['tmpid'] || !resource.validate_token(params[resource_name]['gauth_token'].to_i)
+    if resource.gauth_tmp != params[resource_name]['tmpid'] || !resource.validate_token(params[resource_name]['gauth_token'].to_i,resource.backup_code)
       set_flash_message(:error, :invalid_token)
       render :show
       return
@@ -23,7 +23,14 @@ class Devise::DisplayqrController < DeviseController
 
     if resource.set_gauth_enabled(params[resource_name]['gauth_enabled'])
       set_flash_message :notice, (resource.gauth_enabled? ? :enabled : :disabled)
+      if resource.gauth_enabled.to_i != 0
+        @backup_code = rand.to_s[2..7]
+        resource.backup_code = @backup_code
+        resource.save!
+      flash[:alert]="Your backup Code is.....##{resource.backup_code}"
+    end
       sign_in scope, resource, :bypass => true
+       #
       redirect_to stored_location_for(scope) || :root
     else
       render :show

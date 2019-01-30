@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
-  devise_for :admins #, controllers: { sessions: "admins/sessions" }
+  #devise_for :admins #, controllers: { sessions: "admins/sessions" }
+  devise_for :admins, skip: [:registrations]
+
+  devise_scope :admin do
+    resource :admins,
+           only: [:edit, :update, :destroy],
+           controller: 'devise/registrations',
+           as: :admin_registration do
+      get 'cancel'
+    end
+  end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'attachments/index'
   get 'attachments/new'

@@ -33,6 +33,7 @@ module Devise # :nodoc:
           return false if self.gauth_tmp_datetime.nil?
           if self.gauth_tmp_datetime < self.class.ga_timeout.ago
             return false
+            
           else
 
             valid_vals = []

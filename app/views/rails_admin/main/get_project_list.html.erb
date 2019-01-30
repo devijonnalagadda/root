@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 50px;">
+  
+  <h2 align="center">Project List of "<%= @organization.name %>" Organization</h2>
+  
+  <table class="table table-stripped" style="margin-top: 50px;">
+
+    <thead style="background-color: dimgray; color: white;">
+
+      <tr>
+        <th>Project Id</th>
+        <th>Project Title</th>
+        <th>Project Type</th>
+        <th>Technology</th>
+        <th>Description</th>
+      </tr>
+      
+    </thead>
+
+    <tbody>
+
+      <% @users.each do |user| %>
+        <% user.projects.each do |project| %>
+          <tr>
+            <td><%= project.id %></td>
+            <td><%= project.title %></td>
+            <td><%= project.ptype %></td>
+            <td><%= project.technology %> </td>
+            <td><%= project.description %></td>
+          </tr>
+        <% end %>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

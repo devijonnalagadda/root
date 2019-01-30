@@ -27,10 +27,9 @@ class Devise::DisplayqrController < DeviseController
         @backup_code = rand.to_s[2..7]
         resource.backup_code = @backup_code
         resource.save!
-      flash[:alert]="Your backup Code is.....##{resource.backup_code}"
-    end
+        flash[:alert]="Your backup Code is.....##{resource.backup_code}"
+      end
       sign_in scope, resource, :bypass => true
-       #
       redirect_to stored_location_for(scope) || :root
     else
       render :show

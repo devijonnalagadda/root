@@ -1,3 +1,7 @@
+require Rails.root.join('lib', 'rails_admin', 'get_project_list.rb')
+RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::GetProjectList)
+
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -33,6 +37,8 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    get_project_list 
+
 
     ## With an audit adapter, you can add:
     # history_index

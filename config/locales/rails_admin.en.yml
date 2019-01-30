@@ -1,0 +1,7 @@
+en:
+  admin:
+    actions:
+      get_project_list:
+        menu: 'Project List'
+        title: 'Project List'
+        breadcrumb: 'Project List'

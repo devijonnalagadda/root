@@ -32,8 +32,12 @@
             <li><%= link_to 'Edit Profile',edit_user_registration_path, class: "nav-link marg" %></li>
             <li><%= link_to 'Sign Out',destroy_user_session_path, method: :delete, class: "nav-link marg" %></li>
           <% else %>
-            <li><%= link_to 'Register',new_user_registration_path, class: "nav-link marg" %></li>
-            <li><%= link_to 'Sign In',new_user_session_path, class: "nav-link marg" %></li>
+            <% if current_admin %>
+              <li><%= link_to 'Sign Out',destroy_admin_session_path, class: "nav-link marg" %></li>
+            <% else %>
+              <li><%= link_to 'Register',new_user_registration_path, class: "nav-link marg" %></li>
+              <li><%= link_to 'Sign In',new_user_session_path, class: "nav-link marg" %></li>
+            <% end %>
           <% end %>
         </ul>
       </div>

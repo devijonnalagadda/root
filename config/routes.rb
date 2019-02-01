@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
+
   #devise_for :admins #, controllers: { sessions: "admins/sessions" }
   devise_for :admins, skip: [:registrations]
 
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount ActionCable.server => '/cable'
+  
   get 'attachments/index'
   get 'attachments/new'
   get 'attachments/create'
@@ -23,5 +26,11 @@ Rails.application.routes.draw do
    
 
    resources :attachments, only: [:index, :new, :create, :destroy]
+   resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+    resources :messages, only: [:create]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

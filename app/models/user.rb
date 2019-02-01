@@ -4,7 +4,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :organization
   has_many :projects, dependent: :delete_all
-
+  has_many :messages, dependent: :delete_all
+  has_many :conversations, foreign_key: :sender_id, dependent: :delete_all
+  
   devise :google_authenticatable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
          :confirmable, :timeoutable, :trackable, :validatable, :lockable
@@ -20,6 +22,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :organization
 
+  
   User.where(:gauth_secret => nil).find_each do |user|
   user.send(:assign_auth_secret)
   user.save!

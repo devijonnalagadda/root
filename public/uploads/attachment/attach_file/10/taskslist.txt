@@ -1,0 +1,15 @@
+<% @projects.each do |project| %>
+    <% if project.user_id == current_user.id %>
+    <% @tasks.each do |task| %>
+    <% if task.project_id == project.id %>
+     <tr>
+        <td><%= task.task_title %></td>
+        <td><%= task.task_description %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>

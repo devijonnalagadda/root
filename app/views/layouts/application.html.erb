@@ -4,7 +4,7 @@
     <title>Root</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style type="text/css">
@@ -24,19 +24,19 @@
         </div>
     
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'Home',root_path, class: "nav-link marg" %></li>
+          <li><%= link_to 'Home',root_path, class: "nav-link marg", style: "color: white;" %></li>
           <% if current_user %>
-            <li><%= link_to 'Projects',projects_path, class: "nav-link marg" %></li>
-            <li><%= link_to 'Tasks',tasks_path, class: "nav-link marg" %></li>
-            <li><%= link_to 'Attachments',attachments_path, class: "nav-link marg" %></li>
-            <li><%= link_to 'Edit Profile',edit_user_registration_path, class: "nav-link marg" %></li>
-            <li><%= link_to 'Sign Out',destroy_user_session_path, method: :delete, class: "nav-link marg" %></li>
+            <li><%= link_to 'Projects',projects_path, class: "nav-link marg", style: "color: white;" %></li>
+            <li><%= link_to 'Tasks',tasks_path, class: "nav-link marg", style: "color: white;" %></li>
+            <li><%= link_to 'Attachments',attachments_path, class: "nav-link marg", style: "color: white;" %></li>
+            <li><%= link_to 'Edit Profile',edit_user_registration_path, class: "nav-link marg", style: "color: white;" %></li>
+            <li><%= link_to 'Sign Out',destroy_user_session_path, method: :delete, class: "nav-link marg", style: "color: white;" %></li>
           <% else %>
             <% if current_admin %>
-              <li><%= link_to 'Sign Out',destroy_admin_session_path, class: "nav-link marg" %></li>
+              <li><%= link_to 'Sign Out',destroy_admin_session_path, class: "nav-link marg", style: "color: white;" %></li>
             <% else %>
-              <li><%= link_to 'Register',new_user_registration_path, class: "nav-link marg" %></li>
-              <li><%= link_to 'Sign In',new_user_session_path, class: "nav-link marg" %></li>
+              <li><%= link_to 'Register',new_user_registration_path, class: "nav-link marg", style: "color: white;" %></li>
+              <li><%= link_to 'Sign In',new_user_session_path, class: "nav-link marg", style: "color: white;" %></li>
             <% end %>
           <% end %>
         </ul>

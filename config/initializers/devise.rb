@@ -174,7 +174,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  config.timeout_in = 3.minutes
+  config.timeout_in = 30.minutes
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -194,7 +194,7 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  config.maximum_attempts = 4
+  config.maximum_attempts = 10
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   config.unlock_in = 5.minutes
@@ -294,14 +294,14 @@ Devise.setup do |config|
   # Configure extension for devise
 
   # How long should the user have to enter their token. To change the default, uncomment and change the below:
-   config.ga_timeout = 2.minutes
+   config.ga_timeout = 30.minutes
 
   # Change time drift settings for valid token values. To change the default, uncomment and change the below:
    config.ga_timedrift = 3
 
   # Change setting to how long to remember device before requiring another token. Change to nil to turn feature off.
   # To change the default, uncomment and change the below:
-  config.ga_remembertime = 2.minutes
+  config.ga_remembertime = 30.minutes
 
   # Change setting to assign the application name used by code generator. Defaults to Rails.application.class.parent_name.
   # To change the default, uncomment and change the below:
